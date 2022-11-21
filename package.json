@@ -1,5 +1,5 @@
 {
-  "name": "MERN_APP",
+  "name": "mern_app",
   "version": "1.0.0",
   "description": "A MERN stack app",
   "main": "backend/server.js",
