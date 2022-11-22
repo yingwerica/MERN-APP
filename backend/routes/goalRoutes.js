@@ -6,6 +6,9 @@ const {getGoals,
     deleteGoal
 } = require('../controllers/goalController')
 
+//bring in the protect middleware to protect route
+const {protect} = require('../middleware/authMiddleware')
+
 // router.get('/', getGoals)
 
 // router.post('/', setGoal)
@@ -14,9 +17,10 @@ const {getGoals,
 
 // router.delete('/:id', deleteGoal)
 
-/////////cleaner code for all the routers 
-router.route('/').get(getGoals).post(setGoal)
-router.route('/:id').put(updateGoal).delete(deleteGoal)
+/////////cleaner code for all the routers
+//add protect to protect routes that only can access by authenticated user
+router.route('/').get(protect, getGoals).post(protect, setGoal)
+router.route('/:id').put(protect, updateGoal).delete(protect, deleteGoal)
 
 
 module.exports = router
