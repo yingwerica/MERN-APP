@@ -79,13 +79,7 @@ const loginUser = asyncHandler(async (req, res) => {
 //access Private ----protect route function in authMiddleware
 const getMe = asyncHandler(async (req, res) => {
     //access to req.user is from authMiddleware, this user is authenticated
-    const {_id, name, email} = await User.findById(req.user.id)
-
-    res.status(200).json({ 
-        id: _id,
-        name, 
-        email
-    })
+    res.status(200).json(req.user)
 })
 
 
